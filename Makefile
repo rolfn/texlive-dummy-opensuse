@@ -52,11 +52,12 @@ init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
-	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
+	@rm -rf $(BUILD_ROOT) README.md zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
 
 TL_PACKAGES.lst :
 	@zypper se -s texlive | \
-    awk '(/texlive/ && !/debug/ && !/texlive-dummy/) {print $$2}' | uniq > $@
+    awk '(/texlive/ && !/debug/ && !/texlive-dummy/ && !/texlive-config/) \
+    {print $$2}' | uniq > $@
 
 $(NAME).spec : TL_PACKAGES.lst
 	@echo "#" > $@
