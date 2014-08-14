@@ -65,7 +65,7 @@ clean :
 
 TL_PACKAGES.lst :
 	@zypper se -s texlive | \
-    awk '(/texlive/ && !/debug/ && !/texlive-dummy/ && !/texlive-config/) \
+    awk '(/texlive/ && !/texlive-dummy/ && !/texlive-config/ $$ !/debug/) \
     {print $$2}' | uniq > $@
 
 $(NAME).spec : TL_PACKAGES.lst
