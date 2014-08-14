@@ -38,8 +38,8 @@ README.md :
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de" >> $@
 
-README :
-	@cp README.md $@
+README : README.md
+	@cp $< $@
 
 zzz-texlive.sh : zzz-texlive-tpl.sh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g' > $@
@@ -52,7 +52,7 @@ init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
-	@rm -rf $(BUILD_ROOT) README.md zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
+	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
 
 TL_PACKAGES.lst :
 	@zypper se -s texlive | \
