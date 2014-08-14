@@ -15,8 +15,7 @@ makes it possible to install the original TeX Live distribution \
 packages. The "dummy-package" provides scripts in "/etc/profile.d/" \
 for setting the correct pathes of the TeX Live binaries (you should \
 use the default installation path "/usr/local/texlive/"). After \
-installing a new-year "dummy-package" uninstall the previous one. \
-See also: https://github.com/rolfn/texlive-dummy-opensuse'
+installing a new-year "dummy-package" uninstall the previous one.'
 
 BUILD_ROOT = $(PWD)/rpmbuild
 
@@ -40,8 +39,15 @@ README.md :
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
 
-README : README.md
-	@cp $< $@
+README :
+	@echo "texlive-dummy-opensuse" > $@
+	@echo "======================" >> $@
+	@echo "" >> $@
+	@echo $(DESCRIPTION)" See also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
+	@echo "" >> $@
+	@cat LICENSE >> $@
+	@echo "" >> $@
+	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
 
 zzz-texlive.sh : zzz-texlive-tpl.sh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g' > $@
