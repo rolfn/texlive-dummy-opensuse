@@ -5,6 +5,7 @@ NAME = texlive-dummy
 YEAR = 2014
 VERSION = $(YEAR).9999
 RELEASE = 3
+DATE = "2014/08/14"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the \
@@ -14,7 +15,8 @@ makes it possible to install the original TeX Live distribution \
 packages. The "dummy-package" provides scripts in "/etc/profile.d/" \
 for setting the correct pathes of the TeX Live binaries (you should \
 use the default installation path "/usr/local/texlive/"). After \
-installing a new-year "dummy-package" uninstall the previous one.'
+installing a new-year "dummy-package" uninstall the previous one. \
+See also: https://github.com/rolfn/texlive-dummy-opensuse'
 
 BUILD_ROOT = $(PWD)/rpmbuild
 
@@ -36,7 +38,7 @@ README.md :
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
-	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de" >> $@
+	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
 
 README : README.md
 	@cp $< $@
