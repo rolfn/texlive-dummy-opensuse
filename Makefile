@@ -86,6 +86,7 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo $(DESCRIPTION) >> $@
 	@echo "" >> $@
 	@echo "%prep" >> $@
+	@echo "%setup -c -T" >> $@
 	@echo "cp %{SOURCE0} ." >> $@
 	@echo "" >> $@
 	@echo "%build" >> $@
@@ -95,6 +96,7 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo "mkdir -p %{buildroot}%{_sysconfdir}/profile.d" >> $@
 	@echo "install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/" >> $@
 	@echo "install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/" >> $@
+	@echo "" >> $@
 	@echo "%clean" >> $@
 	@echo "rm -rf %{buildroot}" >> $@
 	@echo "" >> $@
