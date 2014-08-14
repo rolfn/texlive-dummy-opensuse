@@ -43,7 +43,8 @@ README :
 	@echo "texlive-dummy-opensuse" > $@
 	@echo "======================" >> $@
 	@echo "" >> $@
-	@echo $(DESCRIPTION)" See also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
+	@echo $(DESCRIPTION)\
+    "See also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
