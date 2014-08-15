@@ -1,11 +1,11 @@
 
-# Rolf Niepraschk, 2014/08/13, Rolf.Niepraschk@gmx.de
+# Rolf Niepraschk, Rolf.Niepraschk@gmx.de
 
 NAME = texlive-dummy
 YEAR = 2014
 VERSION = $(YEAR).9999
 RELEASE = 3
-DATE = "2014/08/14"
+DATE = "2014/08/15"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the \
@@ -64,8 +64,8 @@ clean :
 	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
 
 TL_PACKAGES.lst :
-	@zypper se -s texlive | \
-    awk '(/texlive/ && !/texlive-dummy/ && !/texlive-config/ $$ !/debug/) \
+	@zypper se  texlive | \
+    awk '/texlive/ && !/texlive-dummy/ && !/texlive-config/ && $$2 !~ /debug/ \
     {print $$2}' | uniq > $@
 
 $(NAME).spec : TL_PACKAGES.lst
