@@ -4,8 +4,8 @@
 NAME = texlive-dummy
 YEAR = 2014
 VERSION = $(YEAR).9999
-RELEASE = 3
-DATE = "2014/08/15"
+RELEASE = 4
+DATE = "2014/11/10"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the \
