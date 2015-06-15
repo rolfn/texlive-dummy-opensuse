@@ -4,7 +4,7 @@
 NAME = texlive-dummy
 YEAR = 2015
 VERSION = $(YEAR).9999
-RELEASE = 4
+RELEASE = 1
 DATE = "2015/06/15"
 
 DESCRIPTION = \
