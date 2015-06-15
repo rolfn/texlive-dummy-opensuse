@@ -2,10 +2,10 @@
 # Rolf Niepraschk, Rolf.Niepraschk@gmx.de
 
 NAME = texlive-dummy
-YEAR = 2014
+YEAR = 2015
 VERSION = $(YEAR).9999
 RELEASE = 4
-DATE = "2014/11/10"
+DATE = "2015/06/15"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the \
