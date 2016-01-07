@@ -8,6 +8,8 @@ set arch=`arch`
 switch ( $arch )
   case i?86: 
     set arch=i386
+  case x86_64:
+    set arch=x86_64
 endsw
 
 set x="`echo $PATH | sed 's|[^:]*/texlive/[^:]*:||g'`"
