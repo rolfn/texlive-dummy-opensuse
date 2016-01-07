@@ -7,6 +7,7 @@ TL_DIR="/usr/local/texlive/TL_VERSION"
 arch=`arch`
 case $arch in
     i?86) arch=i386;;
+    x86_64) arch=x86_64;;
 esac
   
 x="`echo $PATH | sed 's|[^:]*/texlive/[^:]*:||g'`"
