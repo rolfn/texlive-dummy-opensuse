@@ -8,14 +8,14 @@ RELEASE = 6
 DATE = "2016/06/05"
 
 DESCRIPTION = \
-'This is a "dummy-package" which achieves the dependencies of the \
-openSUSE TeX Live packages without installing the real files. This \
-makes it possible to install the original TeX Live distribution \
-(http://www.tug.org/texlive/) without the overhead of the openSUSE \
-packages. The "dummy-package" provides scripts in "/etc/profile.d/" \
-for setting the correct paths of the TeX Live binaries (you should \
-use the default installation path "/usr/local/texlive/"). After \
-installing a new-year "dummy-package" uninstall the previous one.'
+'This is a "dummy-package" which achieves the dependencies of the\
+\nopenSUSE TeX Live packages without installing the real files. This\
+\nmakes it possible to install the original TeX Live distribution\
+\n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
+\npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
+\nfor setting the correct paths of the TeX Live binaries (you should\
+\nuse the default installation path "/usr/local/texlive/"). After\
+\ninstalling a new-year "dummy-package" uninstall the previous one.'
 
 BUILD_ROOT = $(PWD)/rpmbuild
 
@@ -33,7 +33,7 @@ README.md :
 	@echo "texlive-dummy-opensuse" > $@
 	@echo "======================" >> $@
 	@echo "" >> $@
-	@echo $(DESCRIPTION) >> $@
+	@echo -e $(DESCRIPTION) >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
@@ -43,8 +43,8 @@ README :
 	@echo "texlive-dummy-opensuse" > $@
 	@echo "======================" >> $@
 	@echo "" >> $@
-	@echo $(DESCRIPTION)\
-    "See also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
+	@echo -e $(DESCRIPTION)\
+    "\nSee also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
