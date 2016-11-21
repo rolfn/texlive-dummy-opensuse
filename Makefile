@@ -13,7 +13,7 @@ openSUSE TeX Live packages without installing the real files. This \
 makes it possible to install the original TeX Live distribution \
 (http://www.tug.org/texlive/) without the overhead of the openSUSE \
 packages. The "dummy-package" provides scripts in "/etc/profile.d/" \
-for setting the correct pathes of the TeX Live binaries (you should \
+for setting the correct paths of the TeX Live binaries (you should \
 use the default installation path "/usr/local/texlive/"). After \
 installing a new-year "dummy-package" uninstall the previous one.'
 
