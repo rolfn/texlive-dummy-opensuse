@@ -66,7 +66,7 @@ init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
-	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
+	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst README $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
