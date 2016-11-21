@@ -2,7 +2,7 @@
 #    /etc/profile.d/zzz-texlive.sh 
 #
 
-TL_DIR="/usr/local/texlive/TL_VERSION"
+TL_DIR="TL_PATH/TL_VERSION"
 
 arch=`arch`
 case $arch in
