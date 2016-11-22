@@ -2,7 +2,7 @@
 #    /etc/profile.d/zzz-texlive.csh 
 #
 
-set TL_DIR="/usr/local/texlive/TL_VERSION"
+set TL_DIR="TL_PATH/TL_VERSION"
 
 set arch=`arch`
 switch ( $arch )

@@ -1,21 +1,26 @@
 
 # Rolf Niepraschk, Rolf.Niepraschk@gmx.de
 
+# If you have TeX Live installed somewhere other than the default
+# location, change this variable accordingly
+TL_PATH = /usr/local/texlive
+
 NAME = texlive-dummy
-YEAR = 2015
+YEAR = 2016
 VERSION = $(YEAR).9999
-RELEASE = 5
-DATE = "2016/01/04"
+RELEASE = 6
+DATE = "2016/06/05"
 
 DESCRIPTION = \
-'This is a "dummy-package" which achieves the dependencies of the \
-openSUSE TeX Live packages without installing the real files. This \
-makes it possible to install the original TeX Live distribution \
-(http://www.tug.org/texlive/) without the overhead of the openSUSE \
-packages. The "dummy-package" provides scripts in "/etc/profile.d/" \
-for setting the correct pathes of the TeX Live binaries (you should \
-use the default installation path "/usr/local/texlive/"). After \
-installing a new-year "dummy-package" uninstall the previous one.'
+'This is a "dummy-package" which achieves the dependencies of the\
+\nopenSUSE TeX Live packages without installing the real files. This\
+\nmakes it possible to install the original TeX Live distribution\
+\n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
+\npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
+\nfor setting the correct paths of the TeX Live binaries (assuming\
+\nthe installation path "'$(TL_PATH)'").\
+\n\nAfter installing a new-year "dummy-package", uninstall the previous\
+\none.'
 
 BUILD_ROOT = $(PWD)/rpmbuild
 
@@ -33,7 +38,7 @@ README.md :
 	@echo "texlive-dummy-opensuse" > $@
 	@echo "======================" >> $@
 	@echo "" >> $@
-	@echo $(DESCRIPTION) >> $@
+	@echo -e $(DESCRIPTION) >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
@@ -43,25 +48,25 @@ README :
 	@echo "texlive-dummy-opensuse" > $@
 	@echo "======================" >> $@
 	@echo "" >> $@
-	@echo $(DESCRIPTION)\
-    "See also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
+	@echo -e $(DESCRIPTION)\
+    "\n\nSee also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
 
 zzz-texlive.sh : zzz-texlive-tpl.sh
-	@cat $< | sed 's/TL_VERSION/$(YEAR)/g' > $@
+	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@
 
 zzz-texlive.csh : zzz-texlive-tpl.csh
-	@cat $< | sed 's/TL_VERSION/$(YEAR)/g' > $@
+	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@
 
 init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	@mkdir -p $(BUILD_ROOT)/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
-	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst
+	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst README $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
