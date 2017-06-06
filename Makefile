@@ -6,10 +6,10 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2016
+YEAR = 2017
 VERSION = $(YEAR).9999
-RELEASE = 6
-DATE = "2016/06/05"
+RELEASE = 1
+DATE = "2017/06/06"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the\
@@ -22,7 +22,9 @@ DESCRIPTION = \
 \n\nAfter installing a new-year "dummy-package", uninstall the previous\
 \none.'
 
-BUILD_ROOT = $(PWD)/rpmbuild
+BUILD_ROOT = $(PWD)/rpmbuild/### 
+
+all : rpm srpm
 
 rpm : clean init $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bb $(NAME).spec
@@ -31,8 +33,6 @@ rpm : clean init $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 srpm : clean init $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bs $(NAME).spec
 	mv $(BUILD_ROOT)/SRPMS/$(NAME)-$(VERSION)-$(RELEASE).src.rpm .
-
-all : rpm srpm
 
 README.md :
 	@echo "texlive-dummy-opensuse" > $@
@@ -62,11 +62,12 @@ zzz-texlive.csh : zzz-texlive-tpl.csh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@
 
 init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
-	@mkdir -p $(BUILD_ROOT)/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+	@mkdir -p $(addprefix $(BUILD_ROOT),BUILD BUILDROOT RPMS SOURCES SPECS SRPMS)
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
-	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst README $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
+	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst \
+    README $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
