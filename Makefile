@@ -119,5 +119,5 @@ dist : all
 	@mkdir openSUSE
 	@cp -p README.md $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm \
     $(NAME)-$(VERSION)-$(RELEASE).src.rpm openSUSE/
-	@zip $(NAME)-$(YEAR)-$(RELEASE).zip -r openSUSE
+	zip $(NAME)-$(YEAR)-$(RELEASE).zip -r openSUSE
 
