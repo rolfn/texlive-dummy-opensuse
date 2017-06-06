@@ -26,11 +26,11 @@ BUILD_ROOT = $(PWD)/rpmbuild/###
 
 all : rpm srpm
 
-rpm : clean init $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
+rpm : clean init $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bb $(NAME).spec
 	mv $(BUILD_ROOT)/RPMS/noarch/$(NAME)-$(VERSION)-$(RELEASE).noarch.rpm .
 
-srpm : clean init $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
+srpm : clean init $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bs $(NAME).spec
 	mv $(BUILD_ROOT)/SRPMS/$(NAME)-$(VERSION)-$(RELEASE).src.rpm .
 
@@ -44,30 +44,19 @@ README.md :
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
 
-README :
-	@echo "texlive-dummy-opensuse" > $@
-	@echo "======================" >> $@
-	@echo "" >> $@
-	@echo -e $(DESCRIPTION)\
-    "\n\nSee also: https://github.com/rolfn/texlive-dummy-opensuse" >> $@
-	@echo "" >> $@
-	@cat LICENSE >> $@
-	@echo "" >> $@
-	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
-
 zzz-texlive.sh : zzz-texlive-tpl.sh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@
 
 zzz-texlive.csh : zzz-texlive-tpl.csh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@
 
-init : $(NAME).spec README zzz-texlive.sh zzz-texlive.csh
+init : $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 	@mkdir -p $(addprefix $(BUILD_ROOT),BUILD BUILDROOT RPMS SOURCES SPECS SRPMS)
 	@cp $+ $(BUILD_ROOT)/SOURCES
 
 clean :
 	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst \
-    README $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
+    README.md $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
@@ -85,7 +74,7 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo "" >> $@
 	@echo "Version: $(VERSION)" >> $@
 	@echo "Release: $(RELEASE)" >> $@
-	@echo "Source0: README" >> $@
+	@echo "Source0: README.md" >> $@
 	@echo "Source1: zzz-texlive.sh" >> $@
 	@echo "Source2: zzz-texlive.csh" >> $@
 	@echo "" >> $@
@@ -117,7 +106,7 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo "" >> $@
 	@echo "%files" >> $@
 	@echo "%defattr(-, root, root)" >> $@
-	@echo "%doc README" >> $@
+	@echo "%doc README.md" >> $@
 	@echo "%config %{_sysconfdir}/profile.d/zzz-texlive.sh" >> $@
 	@echo "%config %{_sysconfdir}/profile.d/zzz-texlive.csh" >> $@
 	@echo "" >> $@
@@ -128,7 +117,7 @@ $(NAME).spec : TL_PACKAGES.lst
 dist : all
 	@rm -rf openSUSE
 	@mkdir openSUSE
-	@cp -p README $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm \
+	@cp -p README.md $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm \
     $(NAME)-$(VERSION)-$(RELEASE).src.rpm openSUSE/
 	@zip $(NAME)-$(YEAR)-$(RELEASE).zip -r openSUSE
 
