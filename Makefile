@@ -6,10 +6,10 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2018
+YEAR = 2019
 VERSION = $(YEAR).9999
 RELEASE = 1
-DATE = "2018/05/25"
+DATE = "2019/03/19"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the\
