@@ -9,7 +9,7 @@ NAME = texlive-dummy
 YEAR = 2021
 VERSION = $(YEAR).9999
 RELEASE = 2
-DATE = "2020/04/15"
+DATE = "2021/04/06"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the\
