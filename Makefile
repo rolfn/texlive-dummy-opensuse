@@ -18,9 +18,7 @@ DESCRIPTION = \
 \n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
 \npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
 \nfor setting the correct paths of the TeX Live binaries (assuming\
-\nthe installation path "'$(TL_PATH)'").\
-\n\nAfter installing a new-year "dummy-package", uninstall the previous\
-\none.'
+\nthe installation path "'$(TL_PATH)'").'
 
 BUILD_ROOT = $(PWD)/rpmbuild/### 
 
@@ -42,7 +40,7 @@ README.md :
 	@echo "" >> $@
 	@cat LICENSE >> $@
 	@echo "" >> $@
-	@echo "Rolf Niepraschk, Rolf.Niepraschk@gmx.de, $(DATE)" >> $@
+	@echo "Rolf Niepraschk, $(DATE)" >> $@
 
 zzz-texlive.sh : zzz-texlive-tpl.sh
 	@cat $< | sed 's/TL_VERSION/$(YEAR)/g;s/TL_PATH/$(subst /,\/,$(TL_PATH))/g;' > $@

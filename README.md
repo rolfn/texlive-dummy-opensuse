@@ -7,13 +7,10 @@ makes it possible to install the original TeX Live distribution
 (http://www.tug.org/texlive/) without the overhead of the openSUSE 
 packages. The "dummy-package" provides scripts in "/etc/profile.d/" 
 for setting the correct paths of the TeX Live binaries (assuming 
-the installation path "/usr/local/texlive"). 
-
-After installing a new-year "dummy-package", uninstall the previous 
-one.
+the installation path "/usr/local/texlive").
 
 Permission is granted to copy, distribute and/or modify this software
 under the terms of the LaTeX Project Public License (LPPL), version
 1.3. The LPPL maintenance status of this software is "maintained".
 
-Rolf Niepraschk, Rolf.Niepraschk@gmx.de, 2020/04/15
+Rolf Niepraschk, 2021/04/06
