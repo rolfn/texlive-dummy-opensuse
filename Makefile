@@ -6,7 +6,7 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2020
+YEAR = 2021
 VERSION = $(YEAR).9999
 RELEASE = 1
 DATE = "2020/04/15"
