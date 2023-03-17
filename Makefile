@@ -11,6 +11,8 @@ VERSION = $(YEAR).9999
 RELEASE = 1
 DATE = "2023/03/17"
 
+# TODO: Problem "Package header is not signed!" (createrepo?)
+
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the\
 \nopenSUSE TeX Live packages without installing the real files. This\
