@@ -9,11 +9,16 @@ packages. The "dummy-package" provides scripts in "/etc/profile.d/"
 for setting the correct paths of the TeX Live binaries (assuming 
 the installation path "/usr/local/texlive").
 
+Install this package with:
+ 
+`zypper in --allow-unsigned-rpm texlive-dummy-2023.9999-2.noarch.rpm`
+
+The GIT repository of the package is:
+
+https://github.com/rolfn/texlive-dummy-opensuse
+
 Permission is granted to copy, distribute and/or modify this software
 under the terms of the LaTeX Project Public License (LPPL), version
 1.3. The LPPL maintenance status of this software is "maintained".
-
-The GIT repository of the package is:
-https://github.com/rolfn/texlive-dummy-opensuse
 
 Rolf Niepraschk, 2023/03/17

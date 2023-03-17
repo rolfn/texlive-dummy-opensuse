@@ -8,8 +8,9 @@ TL_PATH = /usr/local/texlive
 NAME = texlive-dummy
 YEAR = 2023
 VERSION = $(YEAR).9999
-RELEASE = 1
+RELEASE = 2
 DATE = "2023/03/17"
+PACKAGE_NAME=$(NAME)-$(VERSION)-$(RELEASE)
 
 # TODO: Problem "Package header is not signed!" (createrepo?)
 
@@ -20,7 +21,8 @@ DESCRIPTION = \
 \n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
 \npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
 \nfor setting the correct paths of the TeX Live binaries (assuming\
-\nthe installation path "'$(TL_PATH)'").'
+\nthe installation path "'$(TL_PATH)'").\n\nInstall this package with:\n\
+\n`zypper in --allow-unsigned-rpm $(PACKAGE_NAME).noarch.rpm`'
 
 BUILD_ROOT = $(PWD)/rpmbuild/### 
 
@@ -28,11 +30,11 @@ all : rpm srpm
 
 rpm : clean init $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bb $(NAME).spec
-	mv $(BUILD_ROOT)/RPMS/noarch/$(NAME)-$(VERSION)-$(RELEASE).noarch.rpm .
+	mv $(BUILD_ROOT)/RPMS/noarch/$(PACKAGE_NAME).noarch.rpm .
 
 srpm : clean init $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 	rpmbuild --define "_topdir $(BUILD_ROOT)" -bs $(NAME).spec
-	mv $(BUILD_ROOT)/SRPMS/$(NAME)-$(VERSION)-$(RELEASE).src.rpm .
+	mv $(BUILD_ROOT)/SRPMS/$(PACKAGE_NAME).src.rpm .
 
 README.md :
 	@echo "texlive-dummy-opensuse" > $@
@@ -40,10 +42,11 @@ README.md :
 	@echo "" >> $@
 	@echo -e $(DESCRIPTION) >> $@
 	@echo "" >> $@
-	@cat LICENSE >> $@
-	@echo "" >> $@
 	@echo "The GIT repository of the package is:" >> $@
+	@echo "" >> $@
 	@echo "https://github.com/rolfn/texlive-dummy-opensuse" >> $@
+	@echo "" >> $@
+	@cat LICENSE >> $@
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, $(DATE)" >> $@
 
@@ -59,7 +62,7 @@ init : $(NAME).spec README.md zzz-texlive.sh zzz-texlive.csh
 
 clean :
 	@rm -rf $(BUILD_ROOT) zzz-texlive.sh zzz-texlive.csh TL_PACKAGES.lst \
-    README.md $(NAME).spec $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm
+    README.md $(NAME).spec $(PACKAGE_NAME).noarch.rpm
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
@@ -120,7 +123,7 @@ $(NAME).spec : TL_PACKAGES.lst
 dist : all
 	@rm -rf openSUSE
 	@mkdir openSUSE
-	@cp -p README.md $(NAME)-$(VERSION)-$(RELEASE).noarch.rpm \
-    $(NAME)-$(VERSION)-$(RELEASE).src.rpm openSUSE/
+	@cp -p README.md $(PACKAGE_NAME).noarch.rpm \
+    $(PACKAGE_NAME).src.rpm openSUSE/
 	zip $(NAME)-$(YEAR)-$(RELEASE).zip -r openSUSE
 
