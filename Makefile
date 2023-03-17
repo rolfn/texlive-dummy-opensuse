@@ -6,10 +6,10 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2021
+YEAR = 2023
 VERSION = $(YEAR).9999
-RELEASE = 2
-DATE = "2021/04/06"
+RELEASE = 1
+DATE = "2023/03/17"
 
 DESCRIPTION = \
 'This is a "dummy-package" which achieves the dependencies of the\
@@ -39,6 +39,9 @@ README.md :
 	@echo -e $(DESCRIPTION) >> $@
 	@echo "" >> $@
 	@cat LICENSE >> $@
+	@echo "" >> $@
+	@echo "The GIT repository of the package is:" >> $@
+	@echo "https://github.com/rolfn/texlive-dummy-opensuse" >> $@
 	@echo "" >> $@
 	@echo "Rolf Niepraschk, $(DATE)" >> $@
 
