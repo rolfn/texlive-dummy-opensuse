@@ -11,7 +11,7 @@ the installation path "/usr/local/texlive").
 
 Install this package with:
  
-`zypper in --allow-unsigned-rpm texlive-dummy-2023.9999-2.noarch.rpm`
+`zypper in --allow-unsigned-rpm texlive-dummy-2024.9999-1.noarch.rpm`
 
 The GIT repository of the package is:
 

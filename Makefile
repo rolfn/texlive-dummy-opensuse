@@ -6,9 +6,9 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2023
+YEAR = 2024
 VERSION = $(YEAR).9999
-RELEASE = 2
+RELEASE = 1
 DATE = "2023/03/17"
 PACKAGE_NAME=$(NAME)-$(VERSION)-$(RELEASE)
 
