@@ -21,4 +21,3 @@ Permission is granted to copy, distribute and/or modify this software
 under the terms of the LaTeX Project Public License (LPPL), version
 1.3. The LPPL maintenance status of this software is "maintained".
 
-Rolf Niepraschk, 2023/03/17
