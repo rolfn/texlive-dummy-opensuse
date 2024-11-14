@@ -4,6 +4,10 @@
 
 TL_DIR="TL_PATH/TL_VERSION"
 
+if [ -d "TL_PATH/current" ]; then
+  TL_DIR="TL_PATH/current"
+fi
+
 arch=`arch`
 case $arch in
     i?86) arch=i386;;

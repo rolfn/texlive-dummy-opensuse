@@ -4,6 +4,10 @@
 
 set TL_DIR="TL_PATH/TL_VERSION"
 
+if (-e "TL_PATH/current") then
+  set TL_DIR="TL_PATH/current"
+endif 
+
 set arch=`arch`
 switch ( $arch )
   case i?86: 
@@ -22,4 +26,4 @@ setenv INFOPATH ${TL_DIR}/texmf-dist/doc/info:${x}
 unset TEXINPUTS
 unset TEXMFCONFIG
 
-
+unset x
