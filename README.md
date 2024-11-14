@@ -11,7 +11,7 @@ the installation path "/usr/local/texlive").
 
 Install this package with:
  
-`zypper in --allow-unsigned-rpm texlive-dummy-2024.9999-1.noarch.rpm`
+`zypper in --allow-unsigned-rpm texlive-dummy-2024.9999-2.noarch.rpm`
 
 The GIT repository of the package is:
 
@@ -21,3 +21,4 @@ Permission is granted to copy, distribute and/or modify this software
 under the terms of the LaTeX Project Public License (LPPL), version
 1.3. The LPPL maintenance status of this software is "maintained".
 
+Rolf Niepraschk, 2024/11/14
