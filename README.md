@@ -5,10 +5,10 @@ This is a "dummy-package" which achieves the dependencies of the
 openSUSE TeX Live packages without installing the real files. This 
 makes it possible to install the original TeX Live distribution 
 (http://www.tug.org/texlive/) without the overhead of the openSUSE 
-packages. The "dummy-package" provides scripts in "/etc/profile.d/" 
+packages. The "dummy-package" provides scripts in `/etc/profile.d/` 
 for setting the correct paths of the TeX Live binaries. The installation
-path is assumed to be "/usr/local/texlive/YYYY" ("YYYY" means the year
-of the TeX Live release). In addition, the path "/usr/local/texlive/current"
+path is assumed to be `/usr/local/texlive/YYYY` (`YYYY` means the year
+of the TeX Live release). In addition, the path `/usr/local/texlive/current`
 is supported (e.g. a symbolic link to the path with year). 
 
 Install this package with:

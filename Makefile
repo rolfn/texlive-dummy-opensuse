@@ -19,21 +19,11 @@ DESCRIPTION = \
 \nopenSUSE TeX Live packages without installing the real files. This\
 \nmakes it possible to install the original TeX Live distribution\
 \n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
-\npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
-\nfor setting the correct paths of the TeX Live binaries (assuming\
-\nthe installation path "'$(TL_PATH)'").\n\nInstall this package with:\n\
-\n`zypper in --allow-unsigned-rpm $(PACKAGE_NAME).noarch.rpm`'
-
-DESCRIPTION = \
-'This is a "dummy-package" which achieves the dependencies of the\
-\nopenSUSE TeX Live packages without installing the real files. This\
-\nmakes it possible to install the original TeX Live distribution\
-\n(http://www.tug.org/texlive/) without the overhead of the openSUSE\
-\npackages. The "dummy-package" provides scripts in "/etc/profile.d/"\
+\npackages. The "dummy-package" provides scripts in `/etc/profile.d/`\
 \nfor setting the correct paths of the TeX Live binaries.\
-The installation\npath is assumed to be "/usr/local/texlive/YYYY"\
-("YYYY" means the year\nof the TeX Live release). In addition,\
-the path "/usr/local/texlive/current"\nis supported \
+The installation\npath is assumed to be `/usr/local/texlive/YYYY`\
+(`YYYY` means the year\nof the TeX Live release). In addition,\
+the path `/usr/local/texlive/current`\nis supported \
 (e.g. a symbolic link to the path with year). \n\nInstall this package \
 with:\n\n`zypper in --allow-unsigned-rpm $(PACKAGE_NAME).noarch.rpm`'
 
