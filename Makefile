@@ -6,10 +6,10 @@
 TL_PATH = /usr/local/texlive
 
 NAME = texlive-dummy
-YEAR = 2024
+YEAR = 2025
 VERSION = $(YEAR).9999
-RELEASE = 2
-DATE = "2024/11/16"
+RELEASE = 1
+DATE = "2025/03/12"
 PACKAGE_NAME=$(NAME)-$(VERSION)-$(RELEASE)
 
 # TODO: Problem "Package header is not signed!" (createrepo?)
