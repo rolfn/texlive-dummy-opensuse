@@ -8,7 +8,7 @@ TL_PATH = /usr/local/texlive
 NAME = texlive-dummy
 YEAR = 2026
 VERSION = $(YEAR).9999
-RELEASE = 1
+RELEASE = 2
 DATE = "2026-Jul-10"
 PACKAGE_NAME=$(NAME)-$(VERSION)-$(RELEASE)
 
@@ -69,8 +69,13 @@ clean :
 
 TL_PACKAGES.lst :
 	@zypper se  texlive | \
-    awk -F '|' '/texlive/ && !/texlive-dummy/ && !/texlive-config/ && $$2 !~ /debug/ \
+    awk -F '|' '/texlive/ && !/texlive-dummy/ && $$2 !~ /debug/ \
     {print $$2}' | uniq > $@
+	@echo "texlive-config" >> $@
+	@echo "psutils" >> $@
+	@echo "xindy" >> $@
+	@echo "xindy-doc" >> $@
+	@echo "xindy-rules" >> $@
 
 $(NAME).spec : TL_PACKAGES.lst
 	@echo "#" > $@
@@ -87,10 +92,10 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo "Source1: zzz-texlive.sh" >> $@
 	@echo "Source2: zzz-texlive.csh" >> $@
 	@echo "" >> $@
-	@echo "Provides: %{name} texlive psutils xindy xindy-doc xindy-rules" >> $@
-	@cat TL_PACKAGES.lst | sed 's/^\(.*\)/Provides: \1/' >> $@
+	@echo "Provides: %{name}" >> $@
+	@cat TL_PACKAGES.lst | sed 's/^\(.*\)/Provides: \1 = 99999/' >> $@
 	@echo "Obsoletes: texlive < %{version}" >> $@
-	@cat TL_PACKAGES.lst | sed 's/^\(.*\)/Obsoletes: \1/' >> $@
+	@cat TL_PACKAGES.lst | sed 's/^\(.*\)/Obsoletes: \1 < 99999/' >> $@
 	@echo "BuildRoot: %{_tmppath}/%{name}-%{version}-build" >> $@
 	@echo "BuildArch: noarch" >> $@
 	@echo "Recommends: perl-Tk" >> $@
@@ -124,9 +129,10 @@ $(NAME).spec : TL_PACKAGES.lst
 	@echo "" >> $@
 
 dist : all
-	@rm -rf openSUSE
-	@mkdir openSUSE
+	@rm -f $(NAME)-$(YEAR)-$(RELEASE).zip
+	@rm -rf texlive-dummy-opensuse/
+	@mkdir texlive-dummy-opensuse/
 	@cp -p README.md $(PACKAGE_NAME).noarch.rpm \
-    $(PACKAGE_NAME).src.rpm openSUSE/
-	zip $(NAME)-$(YEAR)-$(RELEASE).zip -r openSUSE
+    $(PACKAGE_NAME).src.rpm texlive-dummy-opensuse//
+	zip $(NAME)-$(YEAR)-$(RELEASE).zip -r texlive-dummy-opensuse/
 

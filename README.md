@@ -13,7 +13,7 @@ is supported (e.g. a symbolic link to the path with year).
 
 Install this package with:
 
-`zypper in --allow-unsigned-rpm texlive-dummy-2026.9999-1.noarch.rpm`
+`zypper in --allow-unsigned-rpm texlive-dummy-2026.9999-2.noarch.rpm`
 
 The GIT repository of the package is:
 
